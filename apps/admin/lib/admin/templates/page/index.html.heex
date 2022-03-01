@@ -1,0 +1,16 @@
+<div class="h-screen">
+  <h3 class="text-3xl mb-2 font-semibold leading-normal">Ryoko...</h3>
+  <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
+    We created a tool for humans to create and manage their own systems, their own processes, their own life.
+  </p>
+  <div class="text-green-500 text-md font-thin">
+    <%= if @current_user do %>
+      <%= @current_user.email %> <br />
+      <%= link "Dashboard", to: Routes.user_settings_path(@conn, :edit), class: "btn-primary" %> <br />
+      <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
+    <% else  %>
+      <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn-primary" %>
+      <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn-secondary" %>
+    <% end %>
+  </div>
+</div>
